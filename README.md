@@ -6,7 +6,3 @@
 - 等分數最高 200 份。
 - 新增「吸星大法」動畫：保留原圓背景，再把扇形吸附到長方形區域。
 - 純 HTML/CSS/JavaScript，可直接部署到 GitHub Pages。
-
-## 部署
-將 `index.html` 上傳到 GitHub Repository 根目錄，然後到：
-Settings → Pages → Deploy from a branch → main → /(root)
