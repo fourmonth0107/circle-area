@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f3f7f4">
+  <meta name="description" content="透過切割、展開與交錯重組，理解圓面積公式 πr² 的互動教具。">
+  <title>圓面積推導互動教具</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">六年級數學・互動探究</p>
+        <h1>圓的面積，為什麼是 πr²？</h1>
+        <p id="instruction" class="instruction">先觀察完整的圓與半徑。</p>
+      </div>
+      <div id="stepBadge" class="step-badge">第 1 步 / 6</div>
+    </header>
+
+    <section class="workspace" aria-label="圓面積推導操作區">
+      <div class="canvas-card">
+        <canvas id="labCanvas" aria-label="可拖曳的圓形扇形與重組圖"></canvas>
+        <div id="canvasTip" class="canvas-tip">拖曳圓，可以移動位置</div>
+      </div>
+
+      <aside class="controls">
+        <section class="panel">
+          <h2>調整圓</h2>
+          <label for="radiusRange">半徑 r <output id="radiusText">5 cm</output></label>
+          <input id="radiusRange" type="range" min="2" max="10" step="1" value="5">
+          <label for="pieceRange">等分數 <output id="pieceText">24 份</output></label>
+          <input id="pieceRange" type="range" min="8" max="200" step="2" value="24">
+          <div class="quick-pieces" aria-label="快速選擇等分數">
+            <button data-pieces="8">8</button><button data-pieces="16">16</button>
+            <button data-pieces="48">48</button><button data-pieces="100">100</button>
+            <button data-pieces="200">200</button>
+          </div>
+          <p class="hint">比較 8、48、200 份：等分越多，重組後的上下邊越平直。</p>
+        </section>
+
+        <section class="panel">
+          <h2>操作圖形</h2>
+          <div class="action-grid">
+            <button id="expandBtn" class="tool-btn">展開</button>
+            <button id="collapseBtn" class="tool-btn">收合</button>
+            <button id="arrangeBtn" class="tool-btn primary">集中排列</button>
+            <button id="groupBtn" class="tool-btn">群組移動</button>
+          </div>
+          <label class="switch-row"><input id="outlineToggle" type="checkbox" checked><span>顯示分割線</span></label>
+          <label class="switch-row"><input id="ghostToggle" type="checkbox"><span>保留原圓參考</span></label>
+        </section>
+
+        <section class="panel values">
+          <h2>目前數值</h2>
+          <dl>
+            <div><dt>圓周長</dt><dd id="cVal">31.42 cm</dd></div>
+            <div><dt>半個圓周</dt><dd id="hcVal">15.71 cm</dd></div>
+            <div><dt>圓面積</dt><dd id="aVal">78.54 cm²</dd></div>
+          </dl>
+        </section>
+      </aside>
+    </section>
+
+    <section id="challenge" class="challenge" hidden>
+      <div><p class="eyebrow">想一想</p><h2 id="questionTitle">重組圖形的底是什麼？</h2><p id="questionText"></p></div>
+      <div id="answers" class="answers"></div>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+    </section>
+
+    <section id="formulaPanel" class="formula-panel" hidden>
+      <div><span>底</span><strong>πr</strong><small>半個圓周長</small></div>
+      <b>×</b><div><span>高</span><strong>r</strong><small>圓的半徑</small></div>
+      <b>=</b><div class="result"><span>圓面積</span><strong>πr²</strong><small>底 × 高</small></div>
+    </section>
+
+    <nav class="step-nav" aria-label="推導步驟">
+      <button id="prevBtn">← 上一步</button>
+      <div class="dots" id="stepDots"></div>
+      <button id="resetBtn">重新開始</button>
+      <button id="nextBtn" class="next">下一步 →</button>
+    </nav>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
